@@ -1,0 +1,14 @@
+{
+  "name": "wetube2",
+  "version": "1.0.0",
+  "description": "Cloning Youtube with Vanilla and NOdeJS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kororo11/wetube2.git"
+  },
+  "author": "kororo",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

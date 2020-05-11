@@ -9,9 +9,13 @@
   },
   "author": "kororo",
   "dependencies": {
+    "@babel/preset-env": "^7.9.6",
     "express": "^4.17.1"
   },
   "scripts": {
     "start": "node index.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6"
   }
 }

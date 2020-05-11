@@ -8,5 +8,19 @@ function handleListening() {
     console.log(`Listening on: http://localhost:${PORT}`);
 }
 
+function handleHome(req, res) {
+    res.send('Yo Home');
+}
+
+function handleProfile(req, res) {
+    res.send('Your on my profile');
+}
+
+// get 으로 요청 받아서 주소가 '/' 이라면, handleHome 이라는 함수를 불러와라.
+app.get('/', handleHome);
+
+// get 으로 요청 받아서 주소가 '/profile' 이라면, handleProfile 이라는 함수를 불러와라.
+app.get('/profile', handleProfile);
+
 // localhost:4000 으로 요청이 들어오면 handleListening 이라는 함수가 실행된다.
 app.listen(PORT, handleListening);

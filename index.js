@@ -1,4 +1,6 @@
-const express = require('express'); // express 를 찾아서 express 에 담는다.
+// const express = require('express'); // express 를 찾아서 express 에 담는다.
+// babel 설치 후 최신 버젼 방식으로 변환
+import express from 'express';
 const app = express(); // express 함수를 실행해서 app 에 담는다.
 
 const PORT = 4000; // 포트는 언제나 변경 할 수 있게 변수로 빼 놓는다.
@@ -8,13 +10,17 @@ function handleListening() {
     console.log(`Listening on: http://localhost:${PORT}`);
 }
 
-function handleHome(req, res) {
+/* function handleHome(req, res) {
     res.send('Yo Home');
 }
 
 function handleProfile(req, res) {
     res.send('Your on my profile');
-}
+} */
+
+const handleHome = (req, res) => res.send('Yo Home');
+
+const handleProfile = (req, res) => res.send('Your on my profile');
 
 // get 으로 요청 받아서 주소가 '/' 이라면, handleHome 이라는 함수를 불러와라.
 app.get('/', handleHome);

@@ -22,6 +22,14 @@ const handleHome = (req, res) => res.send('Yo Home');
 
 const handleProfile = (req, res) => res.send('Your on my profile');
 
+const betweenHome = (req, res, next) => {
+    console.log('Between');
+    next();
+};
+
+// 다른 URL 경로로 들어가기 전에 미들웨어를 거치도록 했음. 위치를 잘 기억할 것!
+app.use(betweenHome);
+
 // get 으로 요청 받아서 주소가 '/' 이라면, handleHome 이라는 함수를 불러와라.
 app.get('/', handleHome);
 

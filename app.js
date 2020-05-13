@@ -5,7 +5,9 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import { userRouter } from './router';
+import userRouter from './routers/userRouter';
+import videoRouter from './routers/videoRouter';
+import globalRouter from './routers/globalRouter';
 
 const app = express(); // express 함수를 실행해서 app 에 담는다.
 
@@ -24,9 +26,9 @@ function handleProfile(req, res) {
     res.send('Your on my profile');
 } */
 
-const handleHome = (req, res) => res.send('Yo Home');
+// const handleHome = (req, res) => res.send('Yo Home');
 
-const handleProfile = (req, res) => res.send('Your on my profile');
+// const handleProfile = (req, res) => res.send('Your on my profile');
 
 app.use(cookieParser());
 app.use(bodyParser.json()); // 'application/json 방식의 Content-Type 데이터를 받아준다.
@@ -38,13 +40,17 @@ app.use(helmet());
 app.use(morgan('dev'));
 
 // get 으로 요청 받아서 주소가 '/' 이라면, handleHome 이라는 함수를 불러와라.
-app.get('/', handleHome);
+// app.get('/', handleHome);
 
 // get 으로 요청 받아서 주소가 '/profile' 이라면, handleProfile 이라는 함수를 불러와라.
-app.get('/profile', handleProfile);
+// app.get('/profile', handleProfile);
 
+// 전체적으로 공통적으로 사용하는 경로 search, login 같은 걸들을 담당하는 globalRouter
+app.use('/', globalRouter);
 // use 의 뜻: 누군가가 /user 경로에 접속하면 두번째 파라미터로 준 userRouter 전체를 사용하겠다는 의미
 app.use('/user', userRouter);
+// use 의 뜻: 누군가가 /video 경로에 접속하면 두번째 파라미터로 준 videoRouter 전체를 사용하겠다는 의미
+app.use('/video', videoRouter);
 
 // localhost:4000 으로 요청이 들어오면 handleListening 이라는 함수가 실행된다.
 // app.listen(PORT, handleListening);

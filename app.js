@@ -5,15 +5,16 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import { userRouter } from './router';
 
 const app = express(); // express 함수를 실행해서 app 에 담는다.
 
-const PORT = 4000; // 포트는 언제나 변경 할 수 있게 변수로 빼 놓는다.
+// const PORT = 4000; // 포트는 언제나 변경 할 수 있게 변수로 빼 놓는다.
 
 // 콘솔에 문구가 찍히게 해준다. 콘솔에 찍힌 url 경로를 command + 클릭 하면 바로 기본 브라우져가 실행 된다.
-function handleListening() {
-    console.log(`Listening on: http://localhost:${PORT}`);
-}
+// function handleListening() {
+//     console.log(`Listening on: http://localhost:${PORT}`);
+// }
 
 /* function handleHome(req, res) {
     res.send('Yo Home');
@@ -42,5 +43,11 @@ app.get('/', handleHome);
 // get 으로 요청 받아서 주소가 '/profile' 이라면, handleProfile 이라는 함수를 불러와라.
 app.get('/profile', handleProfile);
 
+// use 의 뜻: 누군가가 /user 경로에 접속하면 두번째 파라미터로 준 userRouter 전체를 사용하겠다는 의미
+app.use('/user', userRouter);
+
 // localhost:4000 으로 요청이 들어오면 handleListening 이라는 함수가 실행된다.
-app.listen(PORT, handleListening);
+// app.listen(PORT, handleListening);
+
+// 누군가가 내 파일을 불러올 때(import) app object 를 주겠다는 의미
+export default app;

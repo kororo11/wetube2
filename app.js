@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import globalRouter from './routers/globalRouter';
+import routes from './routes';
 
 const app = express(); // express 함수를 실행해서 app 에 담는다.
 
@@ -46,11 +47,11 @@ app.use(morgan('dev'));
 // app.get('/profile', handleProfile);
 
 // 전체적으로 공통적으로 사용하는 경로 search, login 같은 걸들을 담당하는 globalRouter
-app.use('/', globalRouter);
+app.use(routes.home, globalRouter);
 // use 의 뜻: 누군가가 /user 경로에 접속하면 두번째 파라미터로 준 userRouter 전체를 사용하겠다는 의미
-app.use('/user', userRouter);
+app.use(routes.users, userRouter);
 // use 의 뜻: 누군가가 /video 경로에 접속하면 두번째 파라미터로 준 videoRouter 전체를 사용하겠다는 의미
-app.use('/video', videoRouter);
+app.use(routes.videos, videoRouter);
 
 // localhost:4000 으로 요청이 들어오면 handleListening 이라는 함수가 실행된다.
 // app.listen(PORT, handleListening);

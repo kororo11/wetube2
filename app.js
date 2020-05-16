@@ -31,6 +31,11 @@ function handleProfile(req, res) {
 
 // const handleProfile = (req, res) => res.send('Your on my profile');
 
+// view 경로 설정
+app.set('views', './views');
+
+// MVC 에서 View 에 해당하는 engine을 pug 로 설정한다.
+app.set('view engine', 'pug');
 app.use(cookieParser());
 app.use(bodyParser.json()); // 'application/json 방식의 Content-Type 데이터를 받아준다.
 // 'application/x-www-form-urlencoded' 방식의 Content-Type 데이터를 받아준다.(jQuery, ajax 의 기본타입)

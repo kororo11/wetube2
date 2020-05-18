@@ -11,7 +11,7 @@ export const search = (req, res) => {
     const {
         query: { term: searchingBy }, // 프로퍼티 이름 변경. term 을 searchingBy 로 변경했음.
     } = req;
-    res.render('search', { pageTitle: 'Search', searchingBy });
+    res.render('search', { pageTitle: 'Search', searchingBy, videos });
 };
 // export const videos = (req, res) => {
 //     res.render('videos', { pageTitle: 'Videos' });

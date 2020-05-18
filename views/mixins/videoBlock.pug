@@ -1,0 +1,10 @@
+//- 변수명을 videoBlock 으로 지었다. 인자가 있는 형태여서 괄호 안에 무언가 들어갔다. 
+//- video = {} 라는 말은 video 를 객체 형태로 만들어 달라는 뜻이다. video 말고 다른 언어를 써도 되는데 프로그램 흐름을 위해서
+mixin videoBlock(video = {})    
+    .videoBlock //- 클래스 명이 videoBlock 인 div 태그를 만들고
+        //- 클래스 명이 videoBlock__thumbnail 인 video 태그를 만들고, video 안의 videoFile을 src 에 대입
+        video.videoBlock__thumbnail(src=video.videoFile, controls=true) 
+        //- 클래스 명이 videoBlock__title 인 h4 태그를 만들고, video 안의 title을 h4 태그의 내용으로 대입
+        h4.videoBlock__title= video.title
+        //- 클래스 명이 videoBlock__views 인 h6 태그를 만들고, video 안의 views를 h6 태그의 내용어로 대입
+        h6.videoBlock__views= video.views

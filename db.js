@@ -15,7 +15,7 @@ export const videos = [
         id: 222222,
         title: 'Video 2',
         description: 'This is awsome I love',
-        views: 24,
+        views: 212,
         videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
         creator: {
             ie: 121212,

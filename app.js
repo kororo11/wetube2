@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import { localsMiddleware } from './middlewares';
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import globalRouter from './routers/globalRouter';
@@ -51,6 +52,7 @@ app.use(morgan('dev'));
 // get 으로 요청 받아서 주소가 '/profile' 이라면, handleProfile 이라는 함수를 불러와라.
 // app.get('/profile', handleProfile);
 
+app.use(localsMiddleware);
 // 전체적으로 공통적으로 사용하는 경로 search, login 같은 걸들을 담당하는 globalRouter
 app.use(routes.home, globalRouter);
 // use 의 뜻: 누군가가 /user 경로에 접속하면 두번째 파라미터로 준 userRouter 전체를 사용하겠다는 의미

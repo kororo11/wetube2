@@ -10,7 +10,8 @@ block content
             //- p= item.description
             //- mixin 을 사용하는 방법 + 를 하면 된다. videoBlock( ) 안에 객체를 만들기 위해서 { }를 하고 이 안에 내용을 적는다.
             +videoBlock({
-                videoFile: item.videoFile,
-                title: item.title,
-                views: item.views
+                id: item.id,
+                videoFile:  item.videoFile,
+                title:  item.title,
+                views:  item.views
             })

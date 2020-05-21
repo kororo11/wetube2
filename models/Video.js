@@ -19,7 +19,14 @@ const VideoSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment',
+        },
+    ],
 });
 
+// 어디서든지 사용할 수 있게 export 로 모듈화
 const model = mongoose.model('Video', VideoSchema);
 export default model;

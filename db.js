@@ -1,26 +1,14 @@
-export const videos = [
-    {
-        id: 111111,
-        title: 'Video 1',
-        description: 'This is something I love',
-        views: 24,
-        videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
-        creator: {
-            ie: 121212,
-            name: 'kororo',
-            email: 'kororo@me.com',
-        },
-    },
-    {
-        id: 222222,
-        title: 'Video 2',
-        description: 'This is awsome I love',
-        views: 212,
-        videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
-        creator: {
-            ie: 121212,
-            name: 'kororo',
-            email: 'kororo@me.com',
-        },
-    },
-];
+import mongoose from 'mongoose';
+
+mongoose.connect('mongodb://localhost:27017/we-tube', {
+    useNuewUrlParse: true,
+    useFindAndModify: false,
+});
+
+const db = mongoose.connection;
+
+const handleOpen = () => console.log('✅ Connected To DB');
+const handleError = () => console.log(`❌ Error on DB Connection:${error}`);
+
+db.once('open', handleOpen);
+db.once('error', handleError);

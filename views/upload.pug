@@ -1,10 +1,24 @@
 extends layouts/main
+//- 
+    form 태그에 enctype="multipart/form-data" 라는 속성을 추가한다. 
+    enctype 속성은 폼 데이터(form data)가 서버로 제출될 때 해당 데이터가 인코딩되는 방법을 명시합니다. 
+    이 속성은 method 가 "post" 일때만 사용가능합니다.
+    multipart/form-data 라는 속성값의 내용 : 모든 문자를 인코딩하지 않음을 명시함. 이 방식은 <form> 요소가 
+    파일이나 이미지를 서버로 전송할 때 주로 사용함.
+
+    <input> 의 accept 속성은 서버로 업로드할 수 있는 파일의 타입을 명시합니다.
+    accept 속성에 하나 이상의 속성값을 명시할 경우에는 콤마(,) 를 사용하여 구분합니다
+    이러한 accept 속성을 유효성 검사 도구로 사용해서는 안 되며, 업로드된 파일은 서버에서 검정되어야 함
+    이 속성은 <input> 요소의 type 속성값이 "file"인 경우에만 사용할 수 있다
+    video/*     모든 타입의 비디오 파일이 허용됨
+//-
+
 
 block content 
     .form-container
-        form(action=`/videos${routes.upload}`, method='post')
+        form(action=`/videos${routes.upload}`, method='post', enctype="multipart/form-data")
             label(for='file') Video File
-            input(type='file', id='file', name='file', required=true)
+            input(type='file', id='file', name='videoFile', required=true, accept='video/*')
             input(type='text', placeholder='Title', name='title', required=true)
             textarea(name='description', placeholder='Description', required=true)
             input(type='submit', value='Upload Video')

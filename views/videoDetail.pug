@@ -1,5 +1,11 @@
 extends layouts/main
 
 block content
-    p Video Detail!!
+    .video__player
+        video(src=`/${video.fileUrl}`, controls=true, width=640, height=360)
+    .video__info
+        a(href=routes.editVideo(video.id)) Edit Video
+        h5.video__title=`제목: ${video.title}`
+        span.video__views=`조회수: ${video.views}`
+        p.video__description=`설명: ${video.description}`
 

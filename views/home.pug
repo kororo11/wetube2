@@ -11,7 +11,10 @@ block content
             //- mixin 을 사용하는 방법 + 를 하면 된다. videoBlock( ) 안에 객체를 만들기 위해서 { }를 하고 이 안에 내용을 적는다.
             +videoBlock({
                 id: item.id,
-                videoFile:  item.videoFile,
+                videoFile: item.fileUrl,
                 title:  item.title,
                 views:  item.views
             })
+
+    //- .videos
+    //-     video.test(src='uploads/videos/66d4ca9f5280d8fe6ae232232b0f63d8', control=true, witdh=300, height=200)

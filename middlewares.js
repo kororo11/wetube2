@@ -12,7 +12,7 @@ import multer from 'multer';
 */
 
 // 입력된 파일이 videos 파일 내에 저장된다.
-const multerVideo = multer({ dest: 'videos/' });
+const multerVideo = multer({ dest: 'uploads/videos/' });
 
 export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'WeTube';

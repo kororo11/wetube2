@@ -1,16 +1,21 @@
 import routes from '../routes';
 import Video from '../models/Video';
 
+// Home
+
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
+        // id를 기준으로 내림차순 정렬합니다.
+        const videos = await Video.find({}).sort({ _id: -1 });
         res.render('home', { pageTitle: 'Home', videos });
     } catch (error) {
         console.log(error);
         res.render('home', { pageTitle: 'Home', videos: [] });
     }
 };
-export const search = (req, res) => {
+
+//  Search
+export const search = async (req, res) => {
     // ES6 이전의 방식
     // const searchingBy = req.query.term;
     // ES6 이후의 방식
@@ -18,12 +23,24 @@ export const search = (req, res) => {
     const {
         query: { term: searchingBy }, // 프로퍼티 이름 변경. term 을 searchingBy 로 변경했음.
     } = req;
+
+    const videos = [];
+
+    try {
+        videos = await Video.findOne({ title: { $regex: searchingBy, $options: 'i' } });
+    } catch (error) {
+        console.log(error);
+    }
     res.render('search', { pageTitle: 'Search', searchingBy, videos });
 };
+
+// GetUpload
 
 export const getUpload = (req, res) => {
     res.render('upload', { pageTitle: 'Upload' });
 };
+
+// PostUpload
 
 export const postUpload = async (req, res) => {
     const {
@@ -43,6 +60,8 @@ export const postUpload = async (req, res) => {
     // res.render('upload', { pageTitle: 'Upload' });
 };
 
+// VideoDetail
+
 export const videoDetail = async (req, res) => {
     const {
         params: { id },
@@ -55,6 +74,9 @@ export const videoDetail = async (req, res) => {
         res.redirect(routes.home);
     }
 };
+
+// GetEditVideo
+
 export const getEditVideo = async (req, res) => {
     const {
         params: { id },
@@ -67,7 +89,9 @@ export const getEditVideo = async (req, res) => {
     }
 };
 
-export const postEditVide = async (req, res) => {
+// PostEditVideo
+
+export const postEditVideo = async (req, res) => {
     const {
         params: { id },
         body: { title, description },
@@ -79,6 +103,8 @@ export const postEditVide = async (req, res) => {
         res.redirect(routes.home);
     }
 };
+
+// DeleteVideo
 
 export const deleteVideo = async (req, res) => {
     const {

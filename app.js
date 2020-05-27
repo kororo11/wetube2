@@ -39,6 +39,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.use('/uploads', express.static('uploads'));
+app.use('/static', express.static('static'));
 app.use(cookieParser());
 app.use(bodyParser.json()); // 'application/json 방식의 Content-Type 데이터를 받아준다.
 // 'application/x-www-form-urlencoded' 방식의 Content-Type 데이터를 받아준다.(jQuery, ajax 의 기본타입)

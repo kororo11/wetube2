@@ -3,6 +3,8 @@ uploads/*
 
 package-lock.json
 
+static
+
  Logs
 logs
 *.log
